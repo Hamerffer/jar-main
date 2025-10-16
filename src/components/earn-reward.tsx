@@ -1,4 +1,10 @@
 import { CircleChevronRight, IndianRupee } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  
+} from "./ui/carousel";
 
 export const EarnReward = () => {
   return (
@@ -129,12 +135,85 @@ export const Plan = () => {
   );
 };
 
-
-export const Referral=()=>{
-    return(
-        <div className="bg-[#1a003d] w-full p-4 mt-3">
-        <div></div>
-        <div></div>
+export const Referral = () => {
+  return (
+    <div className="bg-[#2f2360] max-w-screen h-fit mx-4 p-2 mt-3 flex">
+      <div>
+        <button className="text-yellow-400 border-b-2 border-yellow-400 font-semibold mb-2">
+          Refer & <span className="text-white">Earn ₹100</span>
+        </button>
+        <h4 className="text-white text-sm font-bold">
+          Earn{" "}
+          <span className="text-yellow-400 text-sm font-bold">money every day</span>
+        </h4>
+        <div className="flex items-center bg-[#2a0a5c] w-fit p-2 rounded">
+          <span>
+            <img src="/whatsapp.webp" className="h6 w-6" alt="" />
+          </span>
+          <span className="text-white font-bold text-xs">Refer Now</span>
         </div>
-    )
-}
+      </div>
+      <div className="flex flex-col">
+        <img src="/refer-earn.png" className="w-40 h-16  relative left-4 top-0.5" alt="" />
+      </div>
+    </div>
+  );
+};
+
+export const About = () => {
+  const cards = [
+    {
+      id: 1,
+      img: "/family-image.jpg",
+      title: "I saved daily and bought 24K gold",
+      time: "12 days ago",
+    },
+    {
+      id: 2,
+      img: "/car.webp",
+      title: "Invested every month now I own a car!",
+      time: "1 month ago",
+    },
+    {
+      id: 3,
+      img: "/saving.webp",
+      title: "Started saving ₹100 daily — small steps matter!",
+      time: "3 weeks ago",
+    },
+  ];
+
+  return (
+    <section className="p-4 text-white">
+      <button className=" text-xl font-bold mb-4">
+        User <span className="text-white">Success Stories</span>
+      </button>
+      <Carousel>
+        <CarouselContent className="flex ">
+          {cards.map((card) => (
+            <CarouselItem
+              key={card.id}
+              className="flex flex-col w-52 bg-[#2f2360]  overflow-hidden mx-1 shadow-md basis-1/2 pl-0"
+            >
+              {/* 🖼 Image Section */}
+              <div className="relative w-full h-26">
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+
+              {/* 📝 Text Section */}
+              <div className="mt-2 px-3 pb-3">
+                <h4 className="text-white  text-xs md:text-sm font-semibold leading-snug line-clamp-2">
+                  {card.title}
+                </h4>
+                <p className="text-gray-400 text-xs mt-1">{card.time}</p>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </section>
+  );
+};
